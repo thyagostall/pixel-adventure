@@ -5,12 +5,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D playerRigidbody;
+    private SpriteRenderer playerSpriteRenderer;
     private Animator playerAnimator;
 
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -26,10 +28,12 @@ public class PlayerMovement : MonoBehaviour
         if (directionX > 0f)
         {
             playerAnimator.SetBool("running", true);
+            playerSpriteRenderer.flipX = false;
         }
         else if (directionX < 0f)
         {
             playerAnimator.SetBool("running", true);
+            playerSpriteRenderer.flipX = true;
         }
         else
         {
