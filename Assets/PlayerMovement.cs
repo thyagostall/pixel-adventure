@@ -8,6 +8,9 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer playerSpriteRenderer;
     private Animator playerAnimator;
 
+    [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] private float jumpForce = 14f;
+
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
@@ -18,11 +21,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float directionX = Input.GetAxisRaw("Horizontal");
-        playerRigidbody.velocity = new Vector2(7f * directionX, playerRigidbody.velocity.y);
+        playerRigidbody.velocity = new Vector2(moveSpeed * directionX, playerRigidbody.velocity.y);
 
         if (Input.GetButtonDown("Jump"))
         {
-            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, 14f);
+            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, jumpForce);
         }
 
         if (directionX > 0f)
