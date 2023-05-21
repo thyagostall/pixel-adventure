@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
+    private int cherries = 0;
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.gameObject.CompareTag("Cherry"))
@@ -12,5 +14,8 @@ public class ItemCollector : MonoBehaviour
         }
 
         Destroy(collision.gameObject);
+        cherries++;
+
+        Debug.Log("Cherries: " + cherries);
     }
 }
