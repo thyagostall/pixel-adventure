@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private enum MovementState { idle, running, jumping, falling }
+
     private Rigidbody2D playerRigidbody;
     private SpriteRenderer playerSpriteRenderer;
     private Animator playerAnimator;
@@ -28,19 +30,31 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, jumpForce);
         }
 
+        MovementState movementState;
         if (directionX > 0f)
         {
-            playerAnimator.SetBool("running", true);
+            movementState = MovementState.running;
             playerSpriteRenderer.flipX = false;
         }
         else if (directionX < 0f)
         {
-            playerAnimator.SetBool("running", true);
+            movementState = MovementState.running;
             playerSpriteRenderer.flipX = true;
         }
         else
         {
-            playerAnimator.SetBool("running", false);
+            movementState = MovementState.idle;
         }
+
+        if (playerRigidbody.velocity.y > 0.01f)
+        {
+            movementState = MovementState.jumping;
+        }
+        else if (playerRigidbody.velocity.y < -0.01f)
+        {
+            movementState = MovementState.falling;
+        }
+
+        playerAnimator.SetInteger("state", (int) movementState);
     }
 }
