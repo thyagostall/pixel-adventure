@@ -6,10 +6,12 @@ using UnityEngine;
 public class PlayerLife : MonoBehaviour
 {
     private Animator playerAnimator;
+    private Rigidbody2D playerRigidbody;
 
     private void Start()
     {
         playerAnimator = GetComponent<Animator>();
+        playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -24,6 +26,12 @@ public class PlayerLife : MonoBehaviour
 
     private void Die()
     {
+        playerRigidbody.bodyType = RigidbodyType2D.Static;
         playerAnimator.SetTrigger("death");
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

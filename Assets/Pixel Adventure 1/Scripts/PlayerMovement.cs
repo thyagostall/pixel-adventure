@@ -25,6 +25,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (playerRigidbody.bodyType != RigidbodyType2D.Dynamic)
+        {
+            return;
+        }
+
         float directionX = Input.GetAxisRaw("Horizontal");
         playerRigidbody.velocity = new Vector2(moveSpeed * directionX, playerRigidbody.velocity.y);
 
