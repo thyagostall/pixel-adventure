@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
-    private Animator animator;
+    private Animator playerAnimator;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -24,6 +24,6 @@ public class PlayerLife : MonoBehaviour
 
     private void Die()
     {
-        animator.SetTrigger("death");
+        playerAnimator.SetTrigger("death");
     }
 }
