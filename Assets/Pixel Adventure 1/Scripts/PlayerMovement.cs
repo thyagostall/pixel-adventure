@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 14f;
     [SerializeField] private LayerMask jumpableGround;
 
+    [SerializeField] private AudioSource jumpSoundEffect;
+
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
@@ -36,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsTouchingGound())
         {
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, jumpForce);
+            jumpSoundEffect.Play();
         }
 
         MovementState movementState;
