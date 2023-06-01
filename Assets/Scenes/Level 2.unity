@@ -1214,7 +1214,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1238,7 +1238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -9.84, y: 0.99, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3272,7 +3272,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5113483912223301691, guid: b9f867d98f9e44bad8d14948f6dc205e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b9f867d98f9e44bad8d14948f6dc205e, type: 3}
 --- !u!1001 &1240570468
 PrefabInstance:
@@ -43142,7 +43143,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5113483912223301691, guid: b9f867d98f9e44bad8d14948f6dc205e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b9f867d98f9e44bad8d14948f6dc205e, type: 3}
 --- !u!1001 &158335914848518124
 PrefabInstance:
