@@ -20,6 +20,8 @@ public class Finish : MonoBehaviour
         }
 
         finishSound.Play();
+        PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
+        playerMovement.Freeze();
         Invoke("CompleteLevel", 2f);
     }
 

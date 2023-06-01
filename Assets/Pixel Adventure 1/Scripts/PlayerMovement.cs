@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer playerSpriteRenderer;
     private Animator playerAnimator;
 
+    private bool isFrozen;
+
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
     [SerializeField] private LayerMask jumpableGround;
@@ -23,10 +25,17 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         playerBoxCollider = GetComponent<BoxCollider2D>();
+
+        isFrozen = false;
     }
 
     void Update()
     {
+        if (isFrozen)
+        {
+            return;
+        }
+
         if (playerRigidbody.bodyType != RigidbodyType2D.Dynamic)
         {
             return;
@@ -72,5 +81,12 @@ public class PlayerMovement : MonoBehaviour
     private bool IsTouchingGound()
     {
         return Physics2D.BoxCast(playerBoxCollider.bounds.center, playerBoxCollider.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
+    }
+
+    public void Freeze()
+    {
+        playerRigidbody.velocity = new Vector2(0, 0);
+        playerAnimator.SetInteger("state", (int) MovementState.idle);
+        isFrozen = true;
     }
 }
